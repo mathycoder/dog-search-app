@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index
-    binding.pry
-    #`https://dog.ceo/api/breed/${breed}/images/random`
+    render json: Search.fetchApiData(params[:query]), status: 201
   end
 end
