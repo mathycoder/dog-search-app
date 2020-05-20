@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { searchBreeds, fetchAllBreeds } from '../actions/searchActions.js'
 
-const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject }) => {
+const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) => {
   const [selectedBreed, setSelectedBreed] = useState(null)
   const [subBreedList, setSubBreedList] = useState([])
   const [selectedSubBreed, setSelectedSubBreed] = useState(null)
@@ -35,8 +35,11 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject }) => {
     e.preventDefault()
     console.log("Breed:", selectedBreed)
     console.log("Sub-Breed:", selectedSubBreed)
-    //const query =
-    // searchBreeds(query)
+
+    const query = selectedSubBreed
+      ? `${selectedBreed}-${selectedSubBreed}`
+      : selectedBreed
+    searchBreeds(query)
   }
 
   const renderBreedDropdown = () => {
