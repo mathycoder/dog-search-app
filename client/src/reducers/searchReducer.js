@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux'
 
 const searchReducer = combineReducers({
-  searchTerm: searchTermReducer
+  images: imagesReducer
 })
 
 export default searchReducer
 
-function searchTermReducer(state = null, action) {
+function imagesReducer(state = [], action) {
 
   switch(action.type) {
+    case 'SEARCH_BREEDS':
+      return action.images
+
+
     default:
       return state;
   }
