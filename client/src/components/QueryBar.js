@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { searchBreeds } from '../actions/searchActions.js'
+import { searchBreeds, fetchAllBreeds } from '../actions/searchActions.js'
 
-const QueryBar = ({ searchBreeds }) => {
+const QueryBar = ({ fetchAllBreeds }) => {
   const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    fetchAllBreeds()
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,7 +33,8 @@ const QueryBar = ({ searchBreeds }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchBreeds: breed => dispatch(searchBreeds(breed))
+    searchBreeds: breed => dispatch(searchBreeds(breed)),
+    fetchAllBreeds: () => dispatch(fetchAllBreeds())
   }
 }
 
