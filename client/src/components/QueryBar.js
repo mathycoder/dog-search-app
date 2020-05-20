@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { searchBreeds, fetchAllBreeds } from '../actions/searchActions.js'
 
-const QueryBar = ({ fetchAllBreeds }) => {
+const QueryBar = ({ fetchAllBreeds, allBreeds }) => {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -14,9 +14,20 @@ const QueryBar = ({ fetchAllBreeds }) => {
     searchBreeds(query)
   }
 
+  const renderBreedDropdown = () => {
+    return (
+      <select>
+        {allBreeds.map(breed => (
+          <option value={breed}>{breed}</option>
+        ))}
+      </select>
+    )
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        {renderBreedDropdown()}
         <input
           type='text'
           value={query}
@@ -31,6 +42,12 @@ const QueryBar = ({ fetchAllBreeds }) => {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    allBreeds: state.search.allBreeds
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     searchBreeds: breed => dispatch(searchBreeds(breed)),
@@ -38,4 +55,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(QueryBar)
+export default connect(mapStateToProps, mapDispatchToProps)(QueryBar)

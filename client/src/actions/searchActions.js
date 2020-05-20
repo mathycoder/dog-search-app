@@ -33,7 +33,6 @@ export function fetchAllBreeds(){
         if (json.error){
           console.log("Error fetching breeds")
         } else {
-          console.log(json.message)
           dispatch({ type: 'FETCH_ALL_BREEDS', breeds: json.message })
         }
       })
