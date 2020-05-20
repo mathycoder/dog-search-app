@@ -4,9 +4,9 @@ const searchReducer = combineReducers({
   searchTerm: searchTermReducer
 })
 
-export default searchRedcuer
+export default searchReducer
 
-function searchTermReducer(state = {}, action) {
+function searchTermReducer(state = null, action) {
 
   switch(action.type) {
     default:
