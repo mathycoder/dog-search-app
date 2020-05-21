@@ -119,7 +119,9 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       <div className="search-form">
         {renderBreedDropdown()}
         {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
-        <button onClick={handleSubmit}>Search</button>
+        <div>
+          <button onClick={handleSubmit}>Search</button>
+        </div>  
       </div>
       {renderFloat ? renderFloatMenu() : null}
     </div>
