@@ -8,14 +8,34 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   const [filteredBreedList, setFilteredBreedList] = useState([])
   const [subBreedList, setSubBreedList] = useState([])
   const [selectedSubBreed, setSelectedSubBreed] = useState(null)
-  const [renderFloat, setRenderFloat] = useState(false)
+  const [renderFloat, _setRenderFloat] = useState(false)
+  const renderFloatRef = useRef(renderFloat)
+  const setRenderFloat = data => {
+    renderFloatRef.current = data
+    _setRenderFloat(data)
+  }
+
+  const floatingMenuRef = useRef(null)
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick)
+  }, [])
+
+  const handleClick = (e) => {
+    if (renderFloatRef.current){
+      if (floatingMenuRef.current.contains(e.target)) { return }
+      setRenderFloat(false)
+    }
+  }
+
+
 
   useEffect(() => {
     fetchAllBreeds()
   }, [])
 
   useEffect(() => {
-      setFilteredBreedList(allBreeds.filter(item => item.includes(searchBreed)))
+      setFilteredBreedList(allBreeds.filter(item => item.includes(searchBreed.toLowerCase())))
   }, [searchBreed, allBreeds])
 
 
@@ -60,7 +80,7 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
 
   const renderFloatMenu = () => {
     return (
-      <div className="breed-form-choices">
+      <div className="breed-form-choices" ref={floatingMenuRef}>
         {filteredBreedList.map((breed, index) => (
           <div
             onClick={(e) => {
