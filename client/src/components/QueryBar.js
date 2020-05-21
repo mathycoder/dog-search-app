@@ -50,7 +50,6 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
           placeholder="Enter breed"
           value={searchBreed}
           onClick={() => setRenderFloat(true)}
-          onPress={() => setRenderFloat(true)}
           onChange={e => {
             setSearchBreed(e.target.value)
           }}
