@@ -8,9 +8,18 @@
 
 .menu-bar-wrapper .logo {
   font-size: 18px;
-  margin: 0 15px;
+  margin-right: 5px;
+  margin-left: 15px;
 }
 
 .logo .logo-bold {
   font-weight: bold;
+}
+
+.paw-print {
+  background-image: url('/dogpaw.png');
+  background-size: contain;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
 }

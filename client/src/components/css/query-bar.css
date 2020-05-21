@@ -1,3 +1,14 @@
 .dropdown-wrapper {
   margin: 0 10px;
 }
+
+.dropdown-wrapper select {
+  height: 30px;
+  background-color: #ececec;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+.dropdown-wrapper select:focus {
+  outline: none;
+}
