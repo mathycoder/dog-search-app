@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To get this app up and running, fork and clone the repository.
 
-Things you may want to cover:
+To set up the Rails server:
 
-* Ruby version
+$ bundle install
+$ rake db:create
 
-* System dependencies
+Since it runs on Postgres, you'll need to open a Postgres server to run locally.  
 
-* Configuration
+To set up the React client side:
 
-* Database creation
+$ cd client npm install
+$ cd ..
 
-* Database initialization
+Now the application should be ready to launch!
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+$ rake start
