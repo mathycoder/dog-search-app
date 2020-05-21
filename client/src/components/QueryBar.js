@@ -71,6 +71,9 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       <div className="breed-dropdown-wrapper">
         <div className="breed-form">
           <input
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
             type="text"
             placeholder="Enter breed"
             value={searchBreed}
