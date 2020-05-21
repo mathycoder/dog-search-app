@@ -4,22 +4,19 @@ import { searchBreeds, fetchAllBreeds } from '../actions/searchActions.js'
 import './css/query-bar.css'
 
 const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) => {
+  const [initialLoad, setInitialLoad] = useState(false)
   const [searchBreed, setSearchBreed] = useState('')
   const [filteredBreedList, setFilteredBreedList] = useState([])
   const [subBreedList, setSubBreedList] = useState([])
   const [selectedSubBreed, setSelectedSubBreed] = useState(null)
   const [renderFloat, _setRenderFloat] = useState(false)
   const renderFloatRef = useRef(renderFloat)
+  const floatingMenuRef = useRef(null)
+
   const setRenderFloat = data => {
     renderFloatRef.current = data
     _setRenderFloat(data)
   }
-
-  const floatingMenuRef = useRef(null)
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick)
-  }, [])
 
   const handleClick = (e) => {
     if (renderFloatRef.current){
@@ -30,7 +27,16 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
 
   useEffect(() => {
     fetchAllBreeds()
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
   }, [])
+
+  useEffect(() => {
+    if (!initialLoad && allBreeds.length > 0) {
+      searchBreeds(allBreeds[0])
+      setInitialLoad(true)
+    }
+  }, [allBreeds])
 
   useEffect(() => {
       setFilteredBreedList(allBreeds.filter(item => item.includes(searchBreed.toLowerCase())))
