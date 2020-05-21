@@ -31,6 +31,13 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       : setSelectedSubBreed(null)
   }, [subBreedList])
 
+  useEffect(() => {
+    const query = selectedSubBreed
+      ? `${selectedBreed}-${selectedSubBreed}`
+      : selectedBreed
+    searchBreeds(query)
+  }, [selectedBreed, selectedSubBreed])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Breed:", selectedBreed)
@@ -72,14 +79,15 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       <form onSubmit={handleSubmit}>
         {renderBreedDropdown()}
         {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
-        <input
-          type="submit"
-          value="Search Breeds"
-        />
       </form>
     </div>
   )
 }
+
+// <input
+//   type="submit"
+//   value="Search Breeds"
+// />
 
 const mapStateToProps = state => {
   return {

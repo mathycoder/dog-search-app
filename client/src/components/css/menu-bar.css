@@ -1,0 +1,15 @@
+.menu-bar-wrapper {
+  background-color: red;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar-wrapper .logo {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.logo .logo-bold {
+  font-weight: bold;
+}

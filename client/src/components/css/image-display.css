@@ -1,13 +1,19 @@
 .images-wrapper {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 630px;
   justify-content: center;
+  padding: 20px;
+  background-color: #C1C8E4;
+  border: 3px solid #8860D0;
+  margin-top: 20px;
 }
 
 .images-wrapper img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   margin: 5px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px #888888;
 }
