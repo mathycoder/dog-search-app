@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './css/image-display.css'
 
 const ImageDisplay = ({ images }) => {
+  const [loadingImages, setLoadingImages] = useState(false)
+
+  useEffect(() => {
+    setLoadingImages(true)
+    window.setTimeout(() => {
+      setLoadingImages(false)
+    }, 500)
+  }, [images])
 
   const renderImages = () => {
     return images.map((imageUrl, index) => (
@@ -15,7 +23,7 @@ const ImageDisplay = ({ images }) => {
   }
 
   return (
-    <div className="images-wrapper">
+    <div className={`images-wrapper ${loadingImages ? 'loading' : ''}`}>
       {renderImages()}
     </div>
   )
