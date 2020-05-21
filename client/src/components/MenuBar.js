@@ -7,7 +7,6 @@ const MenuBar = () => {
     <div className="menu-bar-wrapper">
       <div className="logo">Search<span className="logo-bold">Doggie</span></div>
       <div className="paw-print" />
-      <QueryBar />
     </div>
   )
 }

@@ -6,7 +6,6 @@ import './css/query-bar.css'
 const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) => {
   const [searchBreed, setSearchBreed] = useState('')
   const [filteredBreedList, setFilteredBreedList] = useState([])
-  const [selectedBreed, setSelectedBreed] = useState(null)
   const [subBreedList, setSubBreedList] = useState([])
   const [selectedSubBreed, setSelectedSubBreed] = useState(null)
 
@@ -15,20 +14,17 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   }, [])
 
   useEffect(() => {
-    if (allBreeds.length > 0) setSelectedBreed(allBreeds[0])
-  }, [allBreeds])
-
-  useEffect(() => {
       setFilteredBreedList(allBreeds.filter(item => item.includes(searchBreed)))
   }, [searchBreed, allBreeds])
 
+
   useEffect(() => {
-    if (selectedBreed){
-      const list = subBreedObject[selectedBreed]
+    if (searchBreed){
+      const list = subBreedObject[searchBreed] || []
       setSubBreedList(list)
       if (list.length === 0) setSelectedSubBreed(null)
     }
-  }, [selectedBreed])
+  }, [searchBreed])
 
   useEffect(() => {
     subBreedList.length > 0
@@ -36,20 +32,13 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       : setSelectedSubBreed(null)
   }, [subBreedList])
 
-  useEffect(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const query = selectedSubBreed
-      ? `${selectedBreed}-${selectedSubBreed}`
-      : selectedBreed
+      ? `${searchBreed}-${selectedSubBreed}`
+      : searchBreed
     searchBreeds(query)
-  }, [selectedBreed, selectedSubBreed])
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   const query = selectedSubBreed
-  //     ? `${selectedBreed}-${selectedSubBreed}`
-  //     : selectedBreed
-  //   searchBreeds(query)
-  // }
+  }
 
   const renderBreedDropdown = () => {
     return (
@@ -70,31 +59,15 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
     return (
       <div className="breed-form-choices">
         {filteredBreedList.map((breed, index) => (
-          <div key={index}>
+          <div
+            onClick={(e) => setSearchBreed(breed)}
+            key={index}>
             {breed}
           </div>
         ))}
       </div>
     )
   }
-
-  // const renderBreedDropdown = () => {
-  //   return (
-  //     <div className="dropdown-wrapper">
-  //       <div className="dropdown-label">Breed:</div>
-  //       <select onChange={e => setSelectedBreed(e.target.value)} >
-          // {allBreeds.map((breed, index) => (
-          //   <option
-          //     key={`breed-${index}`}
-          //     value={breed}
-          //   >
-          //     {breed}
-          //   </option>
-          // ))}
-  //       </select>
-  //     </div>
-  //   )
-  // }
 
   const renderSubBreedDropdown = () => {
     return (
@@ -110,23 +83,16 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   }
 
   return (
-    <>
-      {renderBreedDropdown()}
-      {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
+    <div className="query-bar-wrapper">
+      <div className="search-form">
+        {renderBreedDropdown()}
+        {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
+        <button onClick={handleSubmit}>Search</button>
+      </div>
       {renderFloatMenu()}
-    </>
+    </div>
   )
 }
-
-// <form onSubmit={handleSubmit}>
-//   {renderBreedDropdown()}
-//   {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
-// </form>
-
-// <input
-//   type="submit"
-//   value="Search Breeds"
-// />
 
 const mapStateToProps = state => {
   return {
