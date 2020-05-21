@@ -28,8 +28,6 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
     }
   }
 
-
-
   useEffect(() => {
     fetchAllBreeds()
   }, [])
@@ -83,11 +81,13 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
       <div className="breed-form-choices" ref={floatingMenuRef}>
         {filteredBreedList.map((breed, index) => (
           <div
+            className="breed-option"
             onClick={(e) => {
               setSearchBreed(breed)
               setRenderFloat(false)
             }}
             key={index}>
+            <div className="paw-print" />
             {breed}
           </div>
         ))}
