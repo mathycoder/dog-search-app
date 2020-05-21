@@ -68,16 +68,19 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
 
   const renderBreedDropdown = () => {
     return (
-      <div className="breed-form">
-        <input
-          type="text"
-          placeholder="Enter breed"
-          value={searchBreed}
-          onClick={() => setRenderFloat(true)}
-          onChange={e => {
-            setSearchBreed(e.target.value)
-          }}
-        />
+      <div className="breed-dropdown-wrapper">
+        <div className="breed-form">
+          <input
+            type="text"
+            placeholder="Enter breed"
+            value={searchBreed}
+            onClick={() => setRenderFloat(true)}
+            onChange={e => {
+              setSearchBreed(e.target.value)
+            }}
+          />
+        </div>
+        {renderFloat ? renderFloatMenu() : null}
       </div>
     )
   }
@@ -121,12 +124,14 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
         {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
         <div>
           <button onClick={handleSubmit}>Search</button>
-        </div>  
+        </div>
       </div>
-      {renderFloat ? renderFloatMenu() : null}
+
     </div>
   )
 }
+
+// {renderFloat ? renderFloatMenu() : null}
 
 const mapStateToProps = state => {
   return {
