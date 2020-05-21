@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { searchBreeds, fetchAllBreeds } from '../actions/searchActions.js'
+import './css/query-bar.css'
 
 const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) => {
   const [selectedBreed, setSelectedBreed] = useState(null)
@@ -38,51 +39,55 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
     searchBreeds(query)
   }, [selectedBreed, selectedSubBreed])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Breed:", selectedBreed)
-    console.log("Sub-Breed:", selectedSubBreed)
-
-    const query = selectedSubBreed
-      ? `${selectedBreed}-${selectedSubBreed}`
-      : selectedBreed
-    searchBreeds(query)
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const query = selectedSubBreed
+  //     ? `${selectedBreed}-${selectedSubBreed}`
+  //     : selectedBreed
+  //   searchBreeds(query)
+  // }
 
   const renderBreedDropdown = () => {
     return (
-      <select onChange={e => setSelectedBreed(e.target.value)} >
-        {allBreeds.map((breed, index) => (
-          <option
-            key={`breed-${index}`}
-            value={breed}
-          >
-            {breed}
-          </option>
-        ))}
-      </select>
+      <div className="dropdown-wrapper">
+        <select onChange={e => setSelectedBreed(e.target.value)} >
+          {allBreeds.map((breed, index) => (
+            <option
+              key={`breed-${index}`}
+              value={breed}
+            >
+              {breed}
+            </option>
+          ))}
+        </select>
+      </div>
     )
   }
 
   const renderSubBreedDropdown = () => {
     return (
-      <select onChange={e => setSelectedSubBreed(e.target.value)}>
-        {subBreedList.map((subBreed, index) => (
-          <option key={`subBreed-${index}`} value={subBreed}>{subBreed}</option>
-        ))}
-      </select>
+      <div className="dropdown-wrapper">
+        <select onChange={e => setSelectedSubBreed(e.target.value)}>
+          {subBreedList.map((subBreed, index) => (
+            <option key={`subBreed-${index}`} value={subBreed}>{subBreed}</option>
+          ))}
+        </select>
+      </div>
     )
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {renderBreedDropdown()}
-        {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
-      </form>
-    </div>
+    <>
+      {renderBreedDropdown()}
+      {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
+    </>
   )
 }
+
+// <form onSubmit={handleSubmit}>
+//   {renderBreedDropdown()}
+//   {subBreedList.length > 0 ? renderSubBreedDropdown() : null}
+// </form>
 
 // <input
 //   type="submit"

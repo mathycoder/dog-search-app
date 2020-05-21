@@ -1,13 +1,14 @@
 .menu-bar-wrapper {
-  background-color: red;
-  height: 40px;
+  /* background-color: #ECECEC; */
+  background-color: #f3d250;
+  height: 60px;
   display: flex;
   align-items: center;
 }
 
 .menu-bar-wrapper .logo {
   font-size: 18px;
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 .logo .logo-bold {

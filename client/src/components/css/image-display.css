@@ -1,11 +1,11 @@
 .images-wrapper {
   display: flex;
   flex-wrap: wrap;
-  max-width: 630px;
+  max-width: 650px;
   justify-content: center;
   padding: 20px;
-  background-color: #C1C8E4;
-  border: 3px solid #8860D0;
+  background-color: #90ccf4;
+  border: 3px solid #5da2d5;
   margin-top: 20px;
 }
 
@@ -13,7 +13,13 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
-  margin: 5px;
+  margin: 8px;
   border-radius: 5px;
   box-shadow: 3px 3px 2px #888888;
+}
+
+@media screen and (max-width: 500px) {
+  .images-wrapper {
+    width: 200px;
+  }
 }

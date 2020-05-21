@@ -1,7 +1,16 @@
+html, body, main {
+height: 100%;
+margin: 0px;
+}
+
+
 .App-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  padding: 20px;
+  background-color: #ECECEC;
+  background-image: url('/pawprints.png');
+  height: 100%;
 }
