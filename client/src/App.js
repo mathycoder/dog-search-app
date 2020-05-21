@@ -10,11 +10,11 @@ function App() {
       <header>
         <MenuBar />
       </header>
-      <main>
+      <body>
         <div className="App-main">
           <ImageDisplay />
         </div>
-      </main>
+      </body>
     </div>
   );
 }

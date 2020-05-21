@@ -50,6 +50,7 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   const renderBreedDropdown = () => {
     return (
       <div className="dropdown-wrapper">
+        <div className="dropdown-label">Breed:</div>
         <select onChange={e => setSelectedBreed(e.target.value)} >
           {allBreeds.map((breed, index) => (
             <option
@@ -67,6 +68,7 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   const renderSubBreedDropdown = () => {
     return (
       <div className="dropdown-wrapper">
+        <div className="dropdown-label">SubBreed:</div>
         <select onChange={e => setSelectedSubBreed(e.target.value)}>
           {subBreedList.map((subBreed, index) => (
             <option key={`subBreed-${index}`} value={subBreed}>{subBreed}</option>

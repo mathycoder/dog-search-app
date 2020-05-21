@@ -1,6 +1,14 @@
 .dropdown-wrapper {
   margin: 0 10px;
+  display: flex;
+  align-items: center;
 }
+
+.dropdown-wrapper .dropdown-label {
+  margin: 0 5px;
+}
+
+
 
 .dropdown-wrapper select {
   height: 30px;

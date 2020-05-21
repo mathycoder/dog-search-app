@@ -1,8 +1,16 @@
-html, body, main {
+html {
 height: 100%;
-margin: 0px;
 }
 
+body {
+  height: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #ECECEC;
+  background-image: url('/pawprints.png');
+}
 
 .App-main {
   display: flex;
@@ -10,7 +18,5 @@ margin: 0px;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #ECECEC;
-  background-image: url('/pawprints.png');
-  height: 100%;
+  padding-bottom: 50px;
 }
