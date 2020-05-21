@@ -19,12 +19,8 @@
   border: 2px solid #ECECEC;
 }
 
-.images-wrapper.loading img {
-
-}
-
 @media screen and (max-width: 500px) {
   .images-wrapper {
-    width: 200px;
+    width: 85%;
   }
 }
