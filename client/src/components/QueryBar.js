@@ -39,7 +39,7 @@ const QueryBar = ({ fetchAllBreeds, allBreeds, subBreedObject, searchBreeds }) =
   }, [allBreeds])
 
   useEffect(() => {
-      setFilteredBreedList(allBreeds.filter(item => item.includes(searchBreed.toLowerCase())))
+      setFilteredBreedList(allBreeds.filter(item => item.startsWith(searchBreed.toLowerCase())))
   }, [searchBreed, allBreeds])
 
 
