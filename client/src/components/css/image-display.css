@@ -1,3 +1,23 @@
+.loading-bar {
+  margin-top: 100px;
+  background-image: url('/dogpaw.png');
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+
+  /* animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; */
+}
+
+/* @keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+} */
+
+
+
 .images-wrapper {
   display: flex;
   flex-wrap: wrap;

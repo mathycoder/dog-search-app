@@ -1,0 +1,23 @@
+.timer-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 420px;
+}
+
+.timer-wrapper div {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 500px){
+  .timer-wrapper {
+    width: 70vw;
+  }
+
+  .timer-wrapper div {
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 50px;
+    width: 50px;
+  }
+}

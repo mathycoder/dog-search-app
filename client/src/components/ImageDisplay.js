@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Timer from './Timer'
 import './css/image-display.css'
 
 const ImageDisplay = ({ images }) => {
@@ -21,10 +22,12 @@ const ImageDisplay = ({ images }) => {
 
   return (
     <>
-      {images.length > 0 ? renderImagesWrapper() : <div></div>}
+      {images.length > 0 ? renderImagesWrapper() : <Timer />}
     </>
   )
 }
+
+// {images.length > 0 ? renderImagesWrapper() : loadingBar()}
 
 const mapStateToProps = state => {
   return {
