@@ -17,7 +17,7 @@ const ImageDisplay = ({ images }) => {
       <img
         key={index}
         src={imageUrl}
-        alt={`dog-image${index+1}`}
+        alt={`dog-${index+1}`}
       />
     ))
   }

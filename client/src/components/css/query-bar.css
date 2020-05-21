@@ -17,10 +17,18 @@
 
 .search-form input[type=text] {
   height: 20px;
-  padding: 2px 10px;
+  padding: 6px 10px;
   margin: 0 5px;
   font-size: 16px;
   width: 160px;
+  border-radius: 8px;
+  border: 3px solid transparent;
+}
+
+.search-form input[type=text]:focus {
+  /* outline: 3px solid pink; */
+  border-color: pink;
+  outline: none;
 }
 
 .breed-option {
