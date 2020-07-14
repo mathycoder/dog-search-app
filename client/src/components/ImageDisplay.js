@@ -27,8 +27,6 @@ const ImageDisplay = ({ images }) => {
   )
 }
 
-// {images.length > 0 ? renderImagesWrapper() : loadingBar()}
-
 const mapStateToProps = state => {
   return {
     images: state.search.images
