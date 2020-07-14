@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App noselect" style={{height: "100vh", overflow: "scroll"}}>
+    <div className="App noselect">
       <header>
         <MenuBar />
       </header>
